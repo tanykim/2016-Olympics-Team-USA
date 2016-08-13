@@ -1,2 +1,3 @@
-# 2016-Olympics-Team-USA
-Data Visualization of 2016 Olympics Team USA
+# 2016 Rio Olympics Team USA
+
+Some visualizations

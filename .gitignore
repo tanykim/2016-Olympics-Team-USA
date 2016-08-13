@@ -1,0 +1,7 @@
+R/*.png
+webapp/node_modules
+webapp/.tmp
+webapp/public/components
+webapp/public/data/*.json
+.DS_Store
+*.xlsx
