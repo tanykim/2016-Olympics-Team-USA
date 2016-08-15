@@ -4,6 +4,8 @@ angular.module('teamUSAApp')
     .controller('MainCtrl', ['$scope', '$http', 'd3', '_', 'visualizer',
     function ($scope, $http, d3, _, visualizer) {
 
+    $scope.loaded = false;
+
     function getAthleteAges(data, option) {
         return _.map(angular.copy(data), function (d) {
             return _.map(_.filter(d.athletes, function (d) {
@@ -23,6 +25,8 @@ angular.module('teamUSAApp')
 
         //draw vis first
         visualizer.drawVis(d.data);
+
+        $scope.loaded = true;
 
         //sorting options
         $scope.sort = 'name-asc';
@@ -49,6 +53,7 @@ angular.module('teamUSAApp')
 
         //when option selected
         $scope.$watch('highlight', function (newVal, oldVal) {
+
             if (newVal !== oldVal) {
                 var ages = null;
                 if (newVal !== 'all') {
@@ -57,6 +62,7 @@ angular.module('teamUSAApp')
                 visualizer.showHighlights(ages, newVal);
             }
         });
+
     });
 
 

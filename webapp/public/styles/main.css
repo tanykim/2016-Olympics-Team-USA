@@ -88,6 +88,13 @@ header .source {
   margin-top: 10px;
   font-size: 10pt;
 }
+.loading {
+  margin-top: 60px;
+  color: #777777;
+  font-size: 16pt;
+  text-align: center;
+  letter-spacing: 8px;
+}
 .options {
   display: flex;
   flex-wrap: row wrap;

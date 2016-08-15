@@ -20,7 +20,7 @@
 </div>
 
 <!-- contents come here -->
-<div class="container">
+<div class="container" ng-controller="MainCtrl">
 
     <!-- header -->
     <header>
@@ -29,8 +29,12 @@
         <div class="source"> Data source: <a href="http://www.teamusa.org/road-to-rio-2016/team-usa/athletes" target="_blacnk">teamusa.org</a></div>
     </header>
 
+    <div class="loading" ng-hide="loaded">
+        LOADING
+    </div>
+
     <!-- main as projects -->
-    <div class="main" ng-controller="MainCtrl">
+    <div class="main" ng-show="loaded">
 
         <div class="options">
             <!-- sort options -->
