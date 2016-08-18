@@ -91,6 +91,7 @@ h3 {
 }
 .header .title h1 {
   font-weight: 700;
+  line-height: 140%;
 }
 .header .title .desc,
 .header .title .source {
@@ -169,14 +170,13 @@ h3 {
 }
 .list-wrapper .vis {
   margin-bottom: 20px;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
 }
 .list-wrapper .list {
   padding-right: 0px !important;
   padding-left: 0px !important;
   margin-bottom: 20px;
-}
-.list-wrapper .list .age {
-  color: #777777;
 }
 .list-wrapper .list .gender-M {
   color: #00298C;
@@ -198,12 +198,10 @@ h3 {
 .weight .input {
   margin-top: 5px;
 }
-.height {
-  padding-right: 20px;
-}
+.height,
 .weight {
-  border-left: 1px solid #D3D3D3;
-  padding-left: 20px;
+  padding-right: 20px;
+  padding-left: 10px;
 }
 /* footer */
 .footer {

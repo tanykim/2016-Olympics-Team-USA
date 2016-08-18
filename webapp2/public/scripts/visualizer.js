@@ -4,7 +4,7 @@ angular.module('teamUSAApp').factory('visualizer', ['_', 'd3', function (_, d3) 
 
     //layout
     var visWidth = document.getElementById('vis').clientWidth;
-    var margin = { top: 22, right: 12, bottom: 46, left: 56 };
+    var margin = { top: 16, right: 6, bottom: 46, left: 56 };
     var dim = { w: visWidth - margin.left - margin.right };
     dim.h = dim.w;
     var svg;

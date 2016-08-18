@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Team USA - Body Match </title>
+    <title>Team USA - Olympian Match </title>
     <meta name="viewport" content="width=device-width">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
@@ -27,8 +27,8 @@
     <div class="row header">
         <!-- title -->
         <div class="col-xs-12 title">
-            <h1> Olympic Body Match </h1>
-            <div class="desc">Find Team USA athletes with whom you share similar height and weight.</div>
+            <h1> Olympian <br/> Body Match </h1>
+            <div class="desc">Find Team USA athletes with whom you share similar height and weight</div>
             <div class="source"> with <a href="http://www.teamusa.org/road-to-rio-2016/team-usa/athletes" target="_blacnk">2016 U.S. Olympic Team Data</a></div>
         </div>
         <!-- unit options -->
@@ -62,7 +62,7 @@
                     <div class="button" ng-click="findAthletes()">Find Athletes</div>
                 </div>
                 <div class="button-desc">
-                    <i>Among total {{ count.f + count.m }} athletes ({{ count.f}} women &amp; {{ count.m }} men)</i>
+                    <i>Among {{ count.f}} women &amp; {{ count.m }} men athletes</i>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                 <tbody>
                     <tr ng-repeat="a in athletes">
                         <td>{{ a.name }}</td>
-                        <td><span class="gender-{{ a.gender }}">{{ a.gender }}</span> <span class="age">{{ a.age }}</span> </td>
+                        <td><span class="gender-{{ a.gender }}">{{ a.gender }}</span> {{ a.age }}</td>
                         <td>{{ a.sport }}</td>
                         <td>{{ a.height[unit.height] }}</td>
                         <td>{{ a.weight[unit.weight] }}</td>

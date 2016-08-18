@@ -38,8 +38,8 @@ angular.module('teamUSAApp')
 
     //user input
     $scope.unit = { height: 'american', weight: 'american' };
-    $scope.height = { ft: '5', in: '8', cm: '' };
-    $scope.weight = { lbs: '200', kg: '' };
+    $scope.height = { ft: '6', in: '0', cm: '' };
+    $scope.weight = { lbs: '180', kg: '' };
 
     //when a unit selected, update values in other units
     $scope.$watch('unit', function (newVal, oldVal) {
