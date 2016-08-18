@@ -133,7 +133,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="a in athletes">
-                        <td>{{ a.name }}</td>
+                        <td><a href="https://www.google.com/search?q={{a.name}}+{{a.sport}}" target="_blank">{{ a.name }}</a></td>
                         <td><span class="gender-{{ a.gender }}">{{ a.gender }}</span> {{ a.age }}</td>
                         <td>{{ a.sport }}</td>
                         <td>{{ a.height[unit.height] }}</td>

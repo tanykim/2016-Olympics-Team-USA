@@ -4,7 +4,7 @@ angular.module('teamUSAApp').factory('visualizer', ['_', 'd3', function (_, d3) 
 
     //layout
     var visWidth = document.getElementById('vis').clientWidth;
-    var margin = { top: 16, right: 6, bottom: 46, left: 56 };
+    var margin = { top: 22, right: 16, bottom: 52, left: 59 };
     var dim = { w: visWidth - margin.left - margin.right };
     dim.h = dim.w;
     var svg;
@@ -99,7 +99,7 @@ angular.module('teamUSAApp').factory('visualizer', ['_', 'd3', function (_, d3) 
             .on('mouseover', function (d) {
                 svg.append('text')
                     .attr('x', x(d.height))
-                    .attr('y', y(d.weight) - 9)
+                    .attr('y', y(d.weight) - 6)
                     .text(d.name + ' (' + d.sport + ')')
                     .attr('class', 'size-small pos-middle dot-text vis-overlay');
                 d3.select(this).style('fill-opacity', 1);
@@ -119,12 +119,12 @@ angular.module('teamUSAApp').factory('visualizer', ['_', 'd3', function (_, d3) 
             .attr('class', 'axis vis-axis-y');
         svg.append('text')
             .attr('x', dim.w)
-            .attr('y', dim.h + margin.bottom - 6)
+            .attr('y', dim.h + margin.bottom - 9)
             .text(axesLables.x.american)
             .attr('class', 'pos-end size-small vis-axis-x-label');
         svg.append('text')
             .attr('x', 0)
-            .attr('y', -margin.left)
+            .attr('y', -margin.left + 12)
             .text(axesLables.y.american)
             .attr('transform', 'rotate(-90)')
             .attr('class', 'pos-end v-top size-small vis-axis-y-label');

@@ -163,13 +163,13 @@ h3 {
 }
 .result {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .list-wrapper {
   margin-top: 20px;
 }
 .list-wrapper .vis {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding-right: 0px !important;
   padding-left: 0px !important;
 }
@@ -183,6 +183,10 @@ h3 {
 }
 .list-wrapper .list .gender-F {
   color: #DE1818;
+}
+.list-wrapper .list a {
+  color: #000000;
+  text-decoration: underline;
 }
 /* common */
 .height,
