@@ -65,6 +65,7 @@ dev.off()
 
 #other values for vis
 df$name <- paste(trimws(df$FIRST.NAME), trimws(df$LAST.NAME), sep=" ")
+#TODO - add prev medals
 prev <- sapply(df$OLYMPIC.EXPERIENCE, function(x) 
       paste(unlist(stri_match_all_regex(x, "\\d{4}")), sep="", collapse=", ")
     )
@@ -94,12 +95,7 @@ for (i in 1:length(count$Var1)) {
     a <- list (
       name = selected$name[j],
       prev = selected$prev[j],
-      events = selected$events[j],
-      height = selected$height[j],
-      weight = selected$weight[j],
       gender = selected$gender[j],
-      height_original = selected$height_original[j],
-      weight_original = selected$weight_original[j],
       age = selected$age[j],
       birth_date = selected$birth_date[j]
     )
@@ -116,4 +112,25 @@ for (i in 1:length(count$Var1)) {
   sports[i] <- list(s)
   j <- 1
 }
-write(minify(toJSON(sports)), "../webapp/app/data/data.json")
+write(minify(toJSON(sports)), "../webapp/public/data/data.json")
+
+#athletes data
+athletes_list <- list()
+for (i in 1:nrow(all_athletes)) {
+    a <- list (
+      name = all_athletes$name[i],
+      id = i - 1,
+      sport = all_athletes$sport[i],
+      #prev = all_athletes$prev[i],      
+      #birth_date = all_athletes$birth_date[i],
+      #events = all_athletes$events[i],
+      height = all_athletes$height[i],
+      weight = all_athletes$weight[i],
+      gender = all_athletes$gender[i],
+      height_original = all_athletes$height_original[i],
+      weight_original = all_athletes$weight_original[i],
+      age = all_athletes$age[i]
+    )
+    athletes_list[i] = list(a)
+}
+write(minify(toJSON(athletes_list)), "../webapp2/public/data/athletes.json")

@@ -1,7 +1,7 @@
 R/*.png
-webapp/node_modules
-webapp/.tmp
-webapp/public/components
-webapp/public/data/*.json
+*/node_modules
+*/public/styles/main.css
+*/public/components
+*/public/data/*.json
 .DS_Store
 *.xlsx

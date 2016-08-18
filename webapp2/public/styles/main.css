@@ -1,0 +1,281 @@
+@import 'https://fonts.googleapis.com/css?family=Merriweather:400,700';
+/* colors */
+/* olympic colors - http://www.colourlovers.com/palette/149866/Olympic_Flag */
+/* size */
+.web-font {
+  font-family: 'Merriweather', serif;
+}
+.system-font {
+  font-family: system, -apple-system, 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+.red {
+  color: #DE1818;
+}
+.green {
+  color: #087B39;
+}
+.yellow {
+  color: #FFEF08;
+}
+.blue {
+  color: #00298C;
+}
+/* html base */
+body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: system, -apple-system, 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+/* layout */
+.olympic-border {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.olympic-border div {
+  min-height: 6px;
+}
+.olympic-border-footer div {
+  min-height: 4px;
+}
+.olympic-border,
+.olympic-border-footer {
+  display: flex;
+  flex-direction: row;
+}
+.olympic-border div,
+.olympic-border-footer div {
+  width: 20%;
+}
+.olympic-border .blue,
+.olympic-border-footer .blue {
+  background-color: #00298C;
+}
+.olympic-border .red,
+.olympic-border-footer .red {
+  background-color: #DE1818;
+}
+.olympic-border .green,
+.olympic-border-footer .green {
+  background-color: #087B39;
+}
+.olympic-border .yellow,
+.olympic-border-footer .yellow {
+  background-color: #FFEF08;
+}
+.olympic-border .black,
+.olympic-border-footer .black {
+  background-color: #000000;
+}
+.container {
+  position: absolute;
+  top: 6px;
+  width: 100%;
+}
+/* header */
+.header {
+  text-align: center;
+  padding-top: 30px;
+}
+.header .title {
+  font-family: 'Merriweather', serif;
+  padding-bottom: 40px;
+}
+.header .title h1 {
+  font-weight: 700;
+}
+.header .title .desc,
+.header .title .source {
+  color: #777777;
+}
+.header .title .desc a,
+.header .title .source a {
+  color: #777777;
+  text-decoration: underline;
+}
+.header .title .source {
+  font-size: 10pt;
+}
+.header .options {
+  background-color: #efefef;
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+.header .options h3 {
+  font-family: 'Merriweather', serif;
+}
+.header .options .button-wrapper {
+  text-align: center;
+}
+.header .options .button {
+  font-family: 'Merriweather', serif;
+  color: #FFFFFF;
+  background-color: #000000;
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 6px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.header .options .button-desc {
+  margin-top: 10px;
+}
+.loading {
+  margin-top: 60px;
+  color: #777777;
+  font-size: 16pt;
+  text-align: center;
+  letter-spacing: 8px;
+}
+/* main */
+.result,
+.options {
+  text-align: center;
+}
+.result h3,
+.options h3,
+.result h5,
+.options h5 {
+  font-family: 'Merriweather', serif;
+}
+.result .range,
+.options .range,
+.result .gender,
+.options .gender {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-top: 1px solid #D3D3D3;
+  background-color: rgba(239, 239, 239, 0.5);
+}
+.result .gender,
+.options .gender {
+  border-bottom: 1px solid #D3D3D3;
+}
+.result {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.list-wrapper {
+  margin-top: 20px;
+}
+.list-wrapper .vis {
+  margin-bottom: 20px;
+}
+.list-wrapper .list {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  margin-bottom: 20px;
+}
+.list-wrapper .list .age {
+  color: #777777;
+}
+.list-wrapper .list .gender-M {
+  color: #00298C;
+}
+.list-wrapper .list .gender-F {
+  color: #DE1818;
+}
+/* common */
+.height,
+.weight {
+  display: inline-block;
+}
+.height .unit,
+.weight .unit {
+  font-family: 'Merriweather', serif;
+  margin-right: 5px;
+}
+.height .input,
+.weight .input {
+  margin-top: 5px;
+}
+.height {
+  padding-right: 20px;
+}
+.weight {
+  border-left: 1px solid #D3D3D3;
+  padding-left: 20px;
+}
+/* footer */
+.footer {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.footer .desc {
+  font-family: 'Merriweather', serif;
+  background-color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 10pt;
+  text-align: center;
+  color: #FFFFFF;
+}
+.footer .desc a {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+/* d3 */
+.pos-middle {
+  text-anchor: middle;
+}
+.pos-end {
+  text-anchor: end;
+}
+.v-central {
+  alignment-baseline: central;
+}
+.v-top {
+  alignment-baseline: hanging;
+}
+.size-tiny {
+  font-size: 8pt;
+}
+.size-small {
+  font-size: 10pt;
+}
+.size-normal {
+  font-size: 12pt;
+}
+.size-large {
+  font-size: 16pt;
+}
+.stroke-black {
+  stroke: black;
+}
+.stroke-lightGrey {
+  stroke: #D3D3D3;
+}
+.stroke-lightestGrey {
+  stroke: #efefef;
+}
+.fill-grey {
+  fill: #777777;
+}
+.fill-lightGrey {
+  fill: #D3D3D3;
+}
+.fill-lightestGrey {
+  fill: #efefef;
+}
+/* d3 vis specific */
+.axis text {
+  font-family: system, -apple-system, 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+.dot-F {
+  fill: #DE1818;
+}
+.dot-M {
+  fill: #00298C;
+}
+.dot-text {
+  font-family: 'Merriweather', serif;
+}

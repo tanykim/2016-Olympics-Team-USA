@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team USA - Body Match </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
+    <!-- injector:css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endinjector -->
+</head>
+<body ng-app="teamUSAApp">
+
+<!-- olympic color border -->
+<div class="olympic-border">
+    <div class="blue"></div>
+    <div class="yellow"></div>
+    <div class="black"></div>
+    <div class="green"></div>
+    <div class="red"></div>
+</div>
+
+<!-- contents come here -->
+<div class="container" ng-controller="MainCtrl">
+
+    <!-- header -->
+    <div class="row header">
+        <!-- title -->
+        <div class="col-xs-12 title">
+            <h1> Olympic Body Match </h1>
+            <div class="desc">Find Team USA athletes with whom you share similar height and weight.</div>
+            <div class="source"> with <a href="http://www.teamusa.org/road-to-rio-2016/team-usa/athletes" target="_blacnk">2016 U.S. Olympic Team Data</a></div>
+        </div>
+        <!-- unit options -->
+        <div class="col-xs-12 options">
+            <h3> Enter your height and weight </h3>
+            <div class="height">
+                <span class="unit"> Height </span>
+                <input type="radio" name="unit-height" ng-model="unit.height" value="american" ng-checked = "true"> ft/in &nbsp;
+                <input type="radio" name="unit-height" ng-model="unit.height" value="metric"> cm
+                <div ng-show="unit.height == 'american'" class="input">
+                    <input type="text" ng-model="height.ft" size="4" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> ft &nbsp;
+                    <input type="text" ng-model="height.in" size="4" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> in
+                </div>
+                <div ng-show="unit.height == 'metric'" class="input">
+                    <input type="text" ng-model="height.cm" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> cm
+                </div>
+            </div>
+            <div class="weight">
+                <span class="unit"> Weight </span>
+                <input type="radio" name="unit-weight" ng-model="unit.weight" value="american" ng-checked = "true"> lbs &nbsp;
+                <input type="radio" name="unit-weight" ng-model="unit.weight" value="metric"> kg
+                <div ng-show="unit.weight == 'american'" class="input">
+                    <input type="text" ng-model="weight.lbs" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> lbs
+                </div>
+                <div ng-show="unit.weight == 'metric'" class="input">
+                    <input type="text" ng-model="weight.kg" size="5" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> kg
+                </div>
+            </div>
+            <div>
+                <div class="button-wrapper">
+                    <div class="button" ng-click="findAthletes()">Find Athletes</div>
+                </div>
+                <div class="button-desc">
+                    <i>Among total {{ count.f + count.m }} athletes ({{ count.f}} women &amp; {{ count.m }} men)</i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--loading -->
+    <div class="row" ng-show="!isLoaded">
+        <div class="col-xs-12">
+            <div class="loading">
+                LOADING
+            </div>
+        </div>
+    </div>
+
+    <!-- result -->
+    <div class="row result" ng-show="isFound">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <h3 ng-show="athletes.length > 0">
+                <span class="red">{{ athletesCount.f + athletesCount.m }}</span>
+                <span class="green">athlete{{ athletesCount.f + athletesCount.m > 0 ? 's' : '' }}</span>
+                match <span class="yellow">your</span> <span class="blue">body</span>
+            </h3>
+                <!-- no data -->
+            <h3 ng-show="athletes.length == 0">
+                No athletes match your body
+            </h3>
+        </div>
+    </div>
+
+    <!-- range & filering option -->
+    <div class="row options" ng-show="isFound">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 range">
+            <h5> Update height or weight range </h5>
+            <div class="height">
+                <span class="unit">Height</span>
+                {{ unit.height == 'american' ? height.ft + '\'' + height.in : height.cm }} +/-
+                <input type="number" ng-model="range[unit.height].height" min="1" max="20">
+                {{ unit.height == 'american' ? 'inch' : 'cm' }}
+            </div>
+            <div class="weight">
+                <span class="unit">Weight</span> {{ unit.weight == 'american' ? weight.lbs : weight.kg }} +/-
+                <input type="number" ng-model="range[unit.weight].weight"  min="1" max="20">
+                {{ unit.weight == 'american' ? 'lbs' : 'kg' }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-md-offset-3 gender">
+            <h5> Filter gender </h5>
+            <input type="radio" name="gender" ng-model="selectedGenders" value="['F', 'M']" ng-checked = "true"> All Genders&nbsp;
+            <input type="radio" name="gender" ng-model="selectedGenders" value="['F', '']"> Women ({{ athletesCount.f }}) &nbsp;
+            <input type="radio" name="gender" ng-model="selectedGenders" value="['', 'M']"> Men ({{ athletesCount.m }}) &nbsp;
+        </div>
+    </div>
+
+    <!-- table & vis -->
+    <div class="row list-wrapper">
+        <!-- vis -->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 vis" id="vis"></div>
+        <!-- list -->
+        <div class="col-xs-12 col-md-6 col-md-offset-3 list" ng-show="isFound">
+            <table class="table table-condensed table-striped" ng-show="athletes.length > 0">
+                <thead>
+                    <tr>
+                        <th colspan="2">Name</th>
+                        <th>Sport</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="a in athletes">
+                        <td>{{ a.name }}</td>
+                        <td><span class="gender-{{ a.gender }}">{{ a.gender }}</span> <span class="age">{{ a.age }}</span> </td>
+                        <td>{{ a.sport }}</td>
+                        <td>{{ a.height[unit.height] }}</td>
+                        <td>{{ a.weight[unit.weight] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="row">
+        <div class="col-xs-12 footer">
+            <div class="desc">
+                Made by <a href="http://tany.kim" target="_blank"> Tanyoung Kim</a> |
+                View at <a href="https://github.com/tanykim/2016-Olympics-Team-USA" tager="_blank">GitHub </a>
+            </div>
+            <div class="olympic-border-footer">
+                <div class="blue"></div>
+                <div class="yellow"></div>
+                <div class="black"></div>
+                <div class="green"></div>
+                <div class="red"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- bower:js -->
+    <script src="components/angular/angular.js"></script>
+    <script src="components/d3/d3.js"></script>
+    <script src="components/underscore/underscore.js"></script>
+    <!-- endbower -->
+
+    <!-- injector:js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/converter.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/visualizer.js"></script>
+    <!-- endinjector -->
+</body>
+</html>

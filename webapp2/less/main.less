@@ -1,0 +1,290 @@
+@import 'https://fonts.googleapis.com/css?family=Merriweather:400,700';
+
+/* colors */
+@grey: #777777;
+@lightGrey: #D3D3D3;
+@lightestGrey: #efefef;
+
+/* olympic colors - http://www.colourlovers.com/palette/149866/Olympic_Flag */
+@blue: #00298C;
+@yellow: #FFEF08;
+@black: #000000;
+@red: #DE1818;
+@green: #087B39;
+
+@women: @red;
+@men: @blue;
+@all: @black;
+
+/* size */
+@huge: 32pt;
+@large: 16pt;
+@normal: 12pt;
+@small: 10pt;
+@tiny: 8pt;
+
+.web-font {
+    font-family: 'Merriweather', serif;
+}
+.system-font {
+    font-family: system, -apple-system, 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+.red {
+    color: @red;
+}
+.green {
+    color: @green;
+}
+.yellow {
+    color: @yellow;
+}
+.blue {
+    color: @blue;
+}
+/* html base */
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    .system-font();
+}
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+/* layout */
+.olympic-border {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    div {
+        min-height: 6px;
+    }
+}
+.olympic-border-footer {
+    div {
+        min-height: 4px;
+    }
+}
+.olympic-border, .olympic-border-footer {
+    display: flex;
+    flex-direction: row;
+    div {
+        width: 20%;
+    }
+    .blue {
+        background-color: @blue;
+    }
+    .red {
+        background-color: @red;
+    }
+    .green {
+        background-color: @green;
+    }
+    .yellow {
+        background-color: @yellow;
+    }
+    .black {
+        background-color: @black;
+    }
+}
+.container {
+    position: absolute;
+    top: 6px;
+    width: 100%;
+}
+
+/* header */
+.header {
+    text-align: center;;
+    padding-top: 30px;
+    .title {
+        .web-font();
+        padding-bottom: 40px;
+        h1 {
+            font-weight: 700;
+        }
+        .desc, .source {
+            color: @grey;
+            a {
+                color: @grey;
+                text-decoration: underline;
+            }
+        }
+        .source {
+            font-size: @small;
+        }
+    }
+    .options {
+        background-color: @lightestGrey;
+        padding-top: 10px;
+        padding-bottom: 25px;
+        h3 {
+            .web-font();
+        }
+        .button-wrapper {
+            text-align: center;
+        }
+        .button {
+            .web-font();
+            color: #FFFFFF;
+            background-color: @black;
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 6px;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button-desc {
+            margin-top: 10px;
+        }
+    }
+}
+.loading {
+    margin-top: 60px;
+    color: @grey;
+    font-size: @large;
+    text-align: center;
+    letter-spacing: 8px;
+}
+
+/* main */
+.result, .options {
+    text-align: center;
+    h3, h5 {
+        .web-font();
+    }
+    .range, .gender {
+        padding-top: 10px;
+        padding-bottom: 15px;
+        border-top: 1px solid @lightGrey;
+        background-color: fade(@lightestGrey, 50%);
+    }
+    .gender {
+        border-bottom: 1px solid @lightGrey;
+    }
+}
+.result {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.list-wrapper {
+    margin-top: 20px;
+    .vis {
+        margin-bottom: 20px;
+    }
+    .list {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-bottom: 20px;
+        .age {
+            color: @grey;
+        }
+        .gender-M {
+            color: @blue;
+        }
+        .gender-F {
+            color: @red;
+        }
+    }
+}
+
+/* common */
+.height, .weight {
+    display: inline-block;
+    .unit {
+        .web-font();
+        margin-right: 5px;
+    }
+    .input {
+        margin-top: 5px;
+    }
+}
+.height {
+    padding-right: 20px;
+}
+.weight {
+    border-left: 1px solid @lightGrey;
+    padding-left: 20px;
+}
+
+
+/* footer */
+.footer {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    .desc {
+        .web-font();
+        background-color: @black;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: @small;
+        text-align: center;
+        color: #FFFFFF;
+        a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+    }
+}
+
+/* d3 */
+.pos-middle {
+    text-anchor: middle;
+}
+.pos-end {
+    text-anchor: end;
+}
+.v-central {
+    alignment-baseline: central;
+}
+.v-top {
+    alignment-baseline: hanging;
+}
+.size-tiny {
+    font-size: @tiny;
+}
+.size-small {
+    font-size: @small;
+}
+.size-normal {
+    font-size: @normal;
+}
+.size-large {
+    font-size: @large;
+}
+.stroke-black {
+    stroke: black;
+}
+.stroke-lightGrey {
+    stroke: @lightGrey;
+}
+.stroke-lightestGrey {
+    stroke: @lightestGrey;
+}
+.fill-grey {
+    fill: @grey;
+}
+.fill-lightGrey {
+    fill: @lightGrey;
+}
+.fill-lightestGrey {
+    fill: @lightestGrey;
+}
+
+/* d3 vis specific */
+.axis text {
+    .system-font();
+}
+.dot-F {
+    fill: @women;
+}
+.dot-M {
+    fill: @men;
+}
+.dot-text {
+    .web-font();
+}
