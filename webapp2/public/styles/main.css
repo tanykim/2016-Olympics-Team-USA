@@ -192,6 +192,9 @@ h3 {
 .height,
 .weight {
   display: inline-block;
+  padding-right: 20px;
+  padding-left: 10px;
+  padding-top: 5px;
 }
 .height .unit,
 .weight .unit {
@@ -201,11 +204,6 @@ h3 {
 .height .input,
 .weight .input {
   margin-top: 5px;
-}
-.height,
-.weight {
-  padding-right: 20px;
-  padding-left: 10px;
 }
 /* footer */
 .footer {
